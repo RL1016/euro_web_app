@@ -1,0 +1,2349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Pièces commémoratives - France</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0; 
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e1e1e, #2e2e2e);
+            color: #eaeaea;
+            font-family: "Segoe UI", Arial, sans-serif;
+            min-height: 100vh;
+        }
+        .header-space {
+            height: 45px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding-left: 20px;
+        }
+        .header-space h1 {
+            color: #d4af37;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px #0003;
+            margin: auto;
+            text-align: center;
+        }
+        .pieces-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 24px 16px 24px 16px;
+            box-sizing: border-box;
+        }
+        @media (min-width: 900px) {
+            .pieces-list {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .piece {
+                display: flex;
+                align-items: flex-start;
+                background: #fbfbf6;
+                border-radius: 16px;
+                box-shadow: rgba(0, 0, 0, 0.1);
+                padding: 12px 8px 12px 8px;
+                min-height: 100px;
+                width: 100%;
+                box-sizing: border-box;
+                max-width: 100%;
+            }
+            .piece-photo {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100px;
+                min-width: 100px;
+                margin-right: 20px;
+                margin-top: 5px;
+                margin-left: 10px;
+                justify-content: flex-start;
+                padding: 0;
+            }
+
+            .piece-millesime {
+                font-size: 1.3em;
+                color: #003399;
+                font-weight: bold;
+                margin-bottom: 2px;
+                text-align: center;
+            }
+            .piece-photo img {
+                width: 100px;
+                height: 100px;
+                object-fit: contain;
+                border-radius: 12px;
+                box-shadow: 0 2px 8px #0001;
+                background: #f3f3f3;
+                margin-top: 0;
+            }
+            .piece-description {
+                flex: 1;
+                font-size: 0.8em;
+                color: #2c2c2c;
+                margin: 0 1px;
+                margin-top: 5px;
+                max-width: 100px;
+                white-space: normal;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: flex;
+                align-items: center;
+            }
+            .piece-table {
+                min-width: 120px;
+                margin-left: 30px;
+                margin-right: 0px;
+                display: flex;
+                align-items: center;
+            }
+            table {
+                border-collapse: collapse;
+                width: 120px;
+                background: #f8f8f8;
+                border-radius: 12px;
+                overflow: hidden;
+                font-size: 1em;
+                box-shadow: 0 1px 8px #1e90ff22;
+            }
+            table th:nth-child(2) {
+                color : #a97142;
+                background: #fdf6f0
+            }
+            table th:nth-child(3) {
+                color : #d4af37;
+                background: #fffbea;
+            }
+            table th:nth-child(4) {
+                color : #6c5ce7;
+                background: #f5f3ff;   
+            }
+            th, td {
+                border: 1px solid #ddd;
+                padding: 8px 10px;
+                text-align: center;
+            }
+            th.qualite {
+                font-weight: bold;
+                font-size: 1em;
+                padding: 8px;
+            }
+            th.unc { 
+                color : #a97142;
+                background: #fdf6f0
+            }
+            th.bu { 
+                color : #d4af37;
+                background: #fffbea;}
+            th.be { 
+                color : #6c5ce7;
+                background: #f5f3ff;
+            }
+            
+            td.qualite {
+                color: #2c2c2c;
+            }
+            td.unc { background: #fdf6f0;}
+            td.bu { background: #fffbea;}
+            td.be { background: #f5f3ff;}
+            table td:nth-child(2) {
+                background: #fdf6f0;
+                color: #2c2c2c;
+            }
+            table td:nth-child(3) {
+                background: #fffbea;
+                color: #2c2c2c;
+            }
+            table td:nth-child(4) {
+                background: #f5f3ff;
+                color: #2c2c2c;
+            }
+            .row-title {
+                background: #f9f9f9;
+                color: #2c2c2c;
+                font-weight: bold;
+            }
+            .checkbox-cell {
+                background: #fffbe7;
+            }
+            .price-input {
+                color: #2c2c2c;
+                width: 45px;
+                padding: 5px 6px;
+                border-radius: 6px;
+                border: 1px solid #ccc;
+                font-size: 1em;
+                margin-top: 6px;
+            }
+        }
+        @media (max-width: 900px) {
+            .pieces-list {
+                grid-template-columns: 1fr;
+                padding: 20px 6px 30px 6px;
+            }
+            .piece {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 12px 6px;
+                min-height: unset;
+            }
+            .piece-photo {
+                margin-right: 0;
+                margin-bottom: 10px;
+                width: 70px;
+                min-width: 70px;
+            }
+            .piece-millesime-nom {
+                max-width: 100px;
+            }
+            .piece-nom {
+                font-size: 0.95em;
+                max-width: 90px;
+            }
+            .piece-description {
+                margin: 0 0 10px 0;
+                max-width: 100%;
+                font-size: 0.98em;
+            }
+            .piece-table {
+                margin-left: 0;
+                margin-top: 8px;
+                min-width: unset;
+                justify-content: flex-start;
+            }
+            table {
+                width: 100%;
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-space">
+        <h1>Pièces commémoratives - Allemagne D</h1>
+    </div>
+    <div class="pieces-list">
+        <div class="piece"> 
+            <div class="piece-photo">
+                <div class="piece-millesime">2006</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2006">
+                <div class="piece-description">
+                    Schleswig-Holsein.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>85.000</td>
+                        <td>75.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>4.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>7€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2007</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2007">
+                <div class="piece-description">
+                    Mecklembourg Poméranie Occidentale.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>11.840.000</td>
+                        <td>143.000</td>
+                        <td>130.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>5€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>6€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2007</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2007">
+                <div class="piece-description">
+                    Série commune : 50 ans du Traité de Rome.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>14.500.000</td>
+                        <td>90.000</td>
+                        <td>95.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>4.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>10€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2008</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2008">
+                <div class="piece-description">
+                   Eglise Saint-Michel de Hambourg.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>8.9000.000</td>
+                        <td>130.000</td>
+                        <td>125.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>4€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>6€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2009</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2009">
+                <div class="piece-description">
+                    Eglise Saint-Louis de Sarrebruck.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.460.000</td>
+                        <td>105.000</td>
+                        <td>100.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>7€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2009</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2009">
+                <div class="piece-description">
+                    Série commune : 10 ans de l'union économique et monétaire.
+                </div>  
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>60.000</td>
+                        <td>70.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>9€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2010</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2010">
+                <div class="piece-description">
+                    L'hotêl de ville de Brême et la statue de Rolland de Brême.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>91.800</td>
+                        <td>95.900</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>7€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2011</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2011">
+                <div class="piece-description">
+                    Cathédrale de Cologne.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>102.000</td>
+                        <td>102.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>6€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div><div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2012</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2012">
+                <div class="piece-description">
+                    Château de Neuschwanstein.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>88.200</td>
+                        <td>87.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>6€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2012</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2012">
+                <div class="piece-description">
+                    Série commune : 10 ans de l'euro.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>45.000</td>
+                        <td>100.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>6€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2013</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2013">
+                <div class="piece-description">
+                    50 ans de la signature du Traité de l'Elysee (VA).
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>2.310.000</td>
+                        <td>35.000</td>
+                        <td>80.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>6€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2013</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2013">
+                <div class="piece-description">
+                    Monastère de Maulbronn.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>82.000</td>
+                        <td>80.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>6€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2014</div>
+                <img src="LIEN_IMAGE" alt="France 2014">
+                <div class="piece-description">
+                    Eglise de Saint-Michel d'Hildesheim.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>80.000</td>
+                        <td>77.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>6€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2015</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2015">
+                <div class="piece-description">
+                    Eglise Saint-Paul de Francfort.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>40.000</td>
+                        <td>50.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>6€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2015</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2015">
+                <div class="piece-description">
+                    25 ans de la réunification allemande.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>33.825</td>
+                        <td>67.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>7€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2015</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2015">
+                <div class="piece-description">
+                    Série commune : 30 ans du drapeau de l'UE.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>-</td>
+                        <td>25.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>-</td>
+                        <td>7€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2016</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2016">
+                <div class="piece-description">
+                    Zwinger Palace de Dresde.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>35.000</td>
+                        <td>43.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>6€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2017</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2017">
+                <div class="piece-description">
+                    Rhénanie-Palatinat.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>34.000</td>
+                        <td>41.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>6€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2018</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2018">
+                <div class="piece-description">
+                    Helmut Schidt.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>30.000</td>
+                        <td>40.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>7€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2018</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2018">
+                <div class="piece-description">
+                    Château de Charlottenburg.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>33.000</td>
+                        <td>39.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>6€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2019</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2019">
+                <div class="piece-description">
+                    Palais du Reichstag.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>26.400</td>
+                        <td>37.200</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>7€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2019</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2019">
+                <div class="piece-description">
+                    30 ans de la chute du mur de Berlin (VA).
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>4.200.000</td>
+                        <td>26.400</td>
+                        <td>33.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>7€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2020</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2020">
+                <div class="piece-description">
+                    50 ans de la Génuflexion de Varsovie.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>30.000</td>
+                        <td>33.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>7.50€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2020</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2020">
+                <div class="piece-description">
+                    Palais de Sanssouci de Potsdam.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>28.000</td>
+                        <td>32.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>7.50€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2021</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2021">
+                <div class="piece-description">
+                    Cathédrale de Magdebourg.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>25.000</td>
+                        <td>28.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>6€</td>
+                        <td>7€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2022</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2022">
+                <div class="piece-description">
+                    Château de Watburg .
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>26.000</td>
+                        <td>29.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>7€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2022</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2022">
+                <div class="piece-description">
+                    Série commune : 35 ans du programme Erasmus.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>3.570.000</td>
+                        <td>30.000</td>
+                        <td>40.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>7€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2023</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2023">
+                <div class="piece-description">
+                    1275 ans de la naissance de Charlemagne.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>4.200.000</td>
+                        <td>22.000</td>
+                        <td>26.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>7€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2023</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2023">
+                <div class="piece-description">
+                    Hambourg.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>30.000</td>
+                        <td>35.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>7.50€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2024</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2024">
+                <div class="piece-description">
+                    Parc national de Jasmund.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>75.000</td>
+                        <td>71.300</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>6.50€</td>
+                        <td>9€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2024</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2024">
+                <div class="piece-description">
+                    175 ans de la constitution de l'église Saint-Paul.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>19.000</td>
+                        <td>23.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>5€</td>
+                        <td>9€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2025</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2025">
+                <div class="piece-description">
+                    Buocle de la Sarre.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>6.300.000</td>
+                        <td>57.000</td>
+                        <td>59.000</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>2€</td>
+                                <td>3.50€</td>
+                            </table>
+                        </td>
+                        <td>4€</td>
+                        <td>10€</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="piece">
+            <div class="piece-photo">
+                <div class="piece-millesime">2025</div>
+                <img src="LIEN_IMAGE" alt="Allemagne 2025">
+                <div class="piece-description">
+                    35 ans de la réunification allemande.
+                </div>
+            </div>
+            <div class="piece-table">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>
+                            <table>
+                                <th>Circulé</th>
+                                <th>UNC</th>
+                            </table>
+                        </th>
+                        <th>BU</th>
+                        <th>BE</th>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Tirage</td>
+                        <td>?</td>
+                        <td>?</td>
+                        <td>?</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Valeur</td>
+                        <td>
+                            <table>
+                                <td>?</td>
+                                <td>?</td>
+                            </table>
+                        </td>
+                        <td>?</td>
+                        <td>?</td>
+                    </tr>
+                    <tr>
+                        <td class="row-title">Possédée</td>
+                        <td class="checkbox-cell">
+                            <table>
+                                <td>
+                                    <input type="checkbox" name="possede_circulé">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_circulé">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="possede_unc">
+                                    <input class="price-input" type="text" placeholder="Prix €" name="prix_unc">
+                                </td>
+                            </table>
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_bu">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_bu">
+                        </td>
+                        <td class="checkbox-cell">
+                            <input type="checkbox" name="possede_be">
+                            <input class="price-input" type="text" placeholder="Prix €" name="possede_be">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- Copier/coller ce bloc pour chaque pièce, en changeant les infos spécifiques -->
+    </div>
+</body>
+</html>

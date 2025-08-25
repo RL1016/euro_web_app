@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Pièces commémoratives</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0; 
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e1e1e, #4e4e4e);
+            color: #eaeaea;
+            font-family: "Segoe UI", Arial, sans-serif;
+            min-height: 100vh;
+        }
+        .header-space {
+            height: 90px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-left: 0;
+        }
+        .header-space h1 {
+            color: #d4af37;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px #0003;
+            margin: 0;
+            text-align: center;
+        }   
+        .countries {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+            justify-items: center;
+            align-items: start;
+            padding: 40px 0 0 0;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .country {
+            text-align: center;
+            width: 110px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 4px 16px #0002;
+            padding: 14px 4px 10px 4px;
+            transition: transform 0.18s, box-shadow 0.18s;
+        }
+        .country:hover {
+            transform: translateY(-6px) scale(1.04);
+            box-shadow: 0 8px 28px #0003;
+        }
+        .country img {
+            width: 48px;
+            height: 32px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 8px #0001;
+        }
+        .country a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: bold;
+            font-size: 1.05em;
+            letter-spacing: 0.5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .country a:hover {
+            color: #c49209;
+        }
+        @media (max-width: 900px) {
+            .countries {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 18px;
+            }
+            .country {
+                width: 90px;
+                padding: 10px 2px 8px 2px;
+            }
+            .country img {
+                width: 36px;
+                height: 24px;
+            }
+        }
+        @media (max-width: 600px) {
+            .countries {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-space">
+        <h1>Pièces commémoratives par pays</h1>
+    </div>
+    <div class="countries">
+        <div class="country">
+            <a href="/AllemagneA_ccs">
+                <img src="https://flagcdn.com/de.svg" alt="Allemagne A">
+                Allemagne A
+            </a>
+        </div>
+        <div class="country">
+            <a href="/AllemagneD_ccs">
+                <img src="https://flagcdn.com/de.svg" alt="Allemagne D">
+                Allemagne D
+            </a>
+        </div>
+        <div class="country">
+            <a href="/AllemagneF_ccs">
+                <img src="https://flagcdn.com/de.svg" alt="Allemagne F">
+                Allemagne F
+            </a>
+        </div>
+        <div class="country">
+            <a href="/AllemagneG_ccs">
+                <img src="https://flagcdn.com/de.svg" alt="Allemagne G">
+                Allemagne G
+            </a>
+        </div>
+        <div class="country">
+            <a href="/AllemagneJ_ccs">
+                <img src="https://flagcdn.com/de.svg" alt="Allemagne J">
+                Allemagne J
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Andorre_ccs">
+                <img src="https://flagcdn.com/ad.svg" alt="Andorre">
+                Andorre
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Autriche_ccs">
+                <img src="https://flagcdn.com/at.svg" alt="Autriche">
+                Autriche
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Belgique_ccs">
+                <img src="https://flagcdn.com/be.svg" alt="Belgique">
+                Belgique
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Bulgarie_ccs">
+                <img src="https://flagcdn.com/bg.svg" alt="Bulgarie">
+                Bulgarie
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Chypre_ccs">
+                <img src="https://flagcdn.com/cy.svg" alt="Chypre">
+                Chypre
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Croatie_ccs">
+                <img src="https://flagcdn.com/hr.svg" alt="Croatie">
+                Croatie
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Espagne_ccs">
+                <img src="https://flagcdn.com/es.svg" alt="Espagne">
+                Espagne
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Estonie_ccs">
+                <img src="https://flagcdn.com/ee.svg" alt="Estonie">
+                Estonie
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Finlande_ccs">
+                <img src="https://flagcdn.com/fi.svg" alt="Finlande">
+                Finlande
+            </a>
+        </div>
+        <div class="country">
+            <a href="/France_ccs">
+                <img src="https://flagcdn.com/fr.svg" alt="France">
+                France
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Grèce_ccs">
+                <img src="https://flagcdn.com/gr.svg" alt="Grèce">
+                Grèce
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Irlande_ccs">
+                <img src="https://flagcdn.com/ie.svg" alt="Irlande">
+                Irlande
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Italie_ccs">
+                <img src="https://flagcdn.com/it.svg" alt="Italie">
+                Italie
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Lettonie_ccs">
+                <img src="https://flagcdn.com/lv.svg" alt="Lettonie">
+                Lettonie
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Lituanie_ccs">
+                <img src="https://flagcdn.com/lt.svg" alt="Lituanie">
+                Lituanie
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Luxembourg_ccs">
+                <img src="https://flagcdn.com/lu.svg" alt="Luxembourg">
+                Luxembourg
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Malte_ccs">
+                <img src="https://flagcdn.com/mt.svg" alt="Malte">
+                Malte
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Monaco_ccs">
+                <img src="https://flagcdn.com/mc.svg" alt="Monaco">
+                Monaco
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Pays-bas_ccs">
+                <img src="https://flagcdn.com/nl.svg" alt="Pays-Bas">
+                Pays-Bas
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Portugal_ccs">
+                <img src="https://flagcdn.com/pt.svg" alt="Portugal">
+                Portugal
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Saint-marin_ccs">
+                <img src="https://flagcdn.com/sm.svg" alt="Saint-Marin">
+                Saint-Marin
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Slovaquie_ccs">
+                <img src="https://flagcdn.com/sk.svg" alt="Slovaquie">
+                Slovaquie
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Slovénie_ccs">
+                <img src="https://flagcdn.com/si.svg" alt="Slovénie">
+                Slovénie
+            </a>
+        </div>
+        <div class="country">
+            <a href="/Vatican_ccs">
+                <img src="https://flagcdn.com/va.svg" alt="Vatican">
+                Vatican
+            </a>
+        </div>
+    </div>
+</body>
+</html>

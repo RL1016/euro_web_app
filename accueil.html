@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil - Collection de pièces</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0; 
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e1e1e, #4e4e4e);
+            color: #eaeaea;
+            font-family: "Segoe UI", Arial, sans-serif;
+            min-height: 100vh;
+        }
+        .header-space {
+            height: 90px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-left: 40px;
+        }
+        .header-space h1 {
+            color: #d4af37;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px #0003;
+            margin: 0;
+            text-align: center;
+        }
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            width: 100vw;
+            min-height: 35vw;
+        }
+        .card {
+            flex: 1;
+            margin: 24px 18px 32px 18px;
+            background: rgba(255,255,255,0.92);
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.2s, transform 0.2s;
+            position: relative;
+            min-width: 0;
+            padding: 20px;
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 12px 40px #0003;
+        }   
+        .card-title {
+            padding: 28px 32px 0 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #c0392b;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 8px #fff7;
+            text-align: left;
+        }
+        .card:nth-child(2) .card-title {
+            color: #d4af37;
+        }
+        .card:nth-child(3) .card-title {
+            color: #003399;
+        }
+        .card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 0;
+        }
+        .progress-info {
+            margin-top: 10px;
+            font-size: 1.08em;
+            color: #444;
+            text-align: center;
+        }
+        .progress-value {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #222;
+        }
+        .progress-percentage {
+            font-weight: bold;
+            color: #1e90ff;
+            font-size: 1.2em;
+        }
+        .progress-percentage.comm {
+            color: #ff4e50;
+        }
+        .progress-percentage.nat {
+            color: #f9d423;
+        }
+        .progress-chart {
+            margin-top: 0;
+            margin-bottom: 0;
+            width: 80px !important;
+            height: 80px !important;
+        }
+        .card-footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 18px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .card-link {
+            display: inline-block;
+            padding: 8px 22px;
+            background: #c0392b;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 500;
+            box-shadow: 0 2px 8px #ff4e5033;
+            transition: background 0.2s;
+            margin: 0 auto;
+        }
+        .card:nth-child(2) .card-link {
+            background: #d4af37;
+            color: #fff;
+            box-shadow: 0 2px 8px #f9d42333;
+        }
+        .card:nth-child(3) .card-link {
+            background: #003399;
+            color: #fff;
+            box-shadow: 0 2px 8px #1e90ff33;
+        }
+        .card-link:hover {
+            filter: brightness(0.92);
+        }
+        .news-content {
+            padding: 0 20px;
+            text-align: center;
+            color: #444;
+            margin-top: 40px;
+        }
+        @media (max-width: 900px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .card {
+                margin: 18px 24px;
+            }
+        }
+    </style>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="header-space">
+        <h1>Bienvenue sur ta collection de pièces</h1>
+    </div>
+    <div class="main-container">
+        <!-- Pièces commémoratives -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Pièces commémoratives</div>
+            </div>
+            <div class="card-content">
+                <canvas id="commemorativesChart" width="80" height="80" class="progress-chart"></canvas>
+                <div class="progress-info">
+                    <span class="progress-value">360 / 720</span> pièces<br>
+                    <span class="progress-percentage comm">10%</span> complété
+                </div>
+            </div>
+            <div class="card-footer">
+                <a class="card-link" href="/commemoratives">Voir ma collection</a>
+            </div>
+        </div>
+        <!-- Pièces nationales -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Pièces nationales</div>
+            </div>
+            <div class="card-content">
+                <canvas id="nationalesChart" width="80" height="80" class="progress-chart"></canvas>
+                <div class="progress-info">
+                    <span class="progress-value">180 / 240</span> pièces<br>
+                    <span class="progress-percentage nat">75%</span> complété
+                </div>
+            </div>
+            <div class="card-footer">
+                <a class="card-link" href="/nationales">Voir ma collection</a>
+            </div>
+        </div>
+        <!-- News -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">News</div>
+            </div>
+            <div class="card-content">
+                <div class="news-content">
+                    Retrouve ici les dernières actualités sur ta collection !
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Diagramme circulaire commémoratives
+        const commemoCtx = document.getElementById('commemorativesChart').getContext('2d');
+        new Chart(commemoCtx, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [360, 360], // 360 possédées, 360 manquantes
+                    backgroundColor: ['#ff4e50', '#eee'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                cutout: '70%',
+                plugins: { legend: { display: false } },
+                tooltips: { enabled: false }
+            }
+        });
+
+        // Diagramme circulaire nationales
+        const natCtx = document.getElementById('nationalesChart').getContext('2d');
+        new Chart(natCtx, {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: [180, 60], // 180 possédées, 60 manquantes
+                    backgroundColor: ['#f9d423', '#eee'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                cutout: '70%',
+                plugins: { legend: { display: false } },
+                tooltips: { enabled: false }
+            }
+        });
+    </script>
+</body>
+</html>
